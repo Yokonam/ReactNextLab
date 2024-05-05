@@ -4,6 +4,7 @@ import { useState } from 'react'
 export default function Home() {
   const [count, setCount] = useState(0)
   const [history, setHistory] = useState<number[]>([])
+  const [countMax, setCountMax] = useState(10)
 
   function countPlus() {
     if (count < 10) {
