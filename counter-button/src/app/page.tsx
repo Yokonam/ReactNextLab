@@ -6,24 +6,26 @@ export default function Home() {
   const [history, setHistory] = useState<number[]>([])
   const [maxCount, setMaxCount] = useState(10)
   const [minCount, setMinCount] = useState(0)
+  const [range, setRange] = useState(1)
 
   function countPlus() {
     if (count < maxCount) {
-      setCount(count + 1)
-      setHistory([...history, count + 1])
+      setCount(count + range)
+      setHistory([...history, count + range])
     }
   }
 
   function countMinus() {
     if (minCount < count) {
-      setCount(count - 1)
-      setHistory([...history, count - 1])
+      setCount(count - range)
+      setHistory([...history, count - range])
     }
   }
 
   function handleClickReset() {
     setCount(0)
     setHistory([])
+    setRange(0)
   }
 
   return (
@@ -32,15 +34,23 @@ export default function Home() {
       <button onClick={countPlus}>カウンターを増やす</button>
       <button onClick={countMinus}>カウンターを減らす</button>
       <button onClick={handleClickReset}>カウンターをリセット</button>
+      <p>最大値</p>
       <input
         type="number"
         value={maxCount}
         onChange={(e) => setMaxCount(Number(e.target.value))}
       />
+      <p>最小値</p>
       <input
         type="number"
         value={minCount}
         onChange={(e) => setMinCount(Number(e.target.value))}
+      />
+      <p>増加値</p>
+      <input
+        type="number"
+        value={range}
+        onChange={(e) => setRange(Number(e.target.value))}
       />
       <ul>
         {history.map((item, index) => (
