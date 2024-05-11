@@ -37,7 +37,7 @@ button:hover {
   margin-top: 20px;
 }
 
-li {
+.list-row {
   display: flex;
   align-items: center;
   gap: 10px;
