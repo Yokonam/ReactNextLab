@@ -1,0 +1,57 @@
+.input-area {
+  border: solid 1px tomato;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  border-radius: 10px;
+  border: solid 1px tomato;
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  padding: 5px 20px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  border: solid 1px tomato;
+  background-color: white;
+  color: tomato;
+}
+
+button:hover {
+  background-color: tomato;
+  color: white;
+}
+
+.incomplete-area {
+  border: solid 1px tomato;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.complete-area {
+  border: solid 1px tomato;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+}
