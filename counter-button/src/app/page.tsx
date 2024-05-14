@@ -1,38 +1,48 @@
 'use client'
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+
+export type historyProps = {
+  id: number
+  value: string | number
+}
 
 export default function Home() {
   const [count, setCount] = useState(0)
-  const [history, setHistory] = useState<number[]>([])
-  const [maxCount, setMaxCount] = useState(10)
+  const [history, setHistory] = useState<historyProps[]>([])
+  const [maxCount, setMaxCount] = useState(5)
   const [minCount, setMinCount] = useState(0)
   const [range, setRange] = useState(1)
 
   function countPlus() {
-    if (count < maxCount) {
-      setCount(count + range)
-      setHistory([...history, count + range])
-    }
+    const newCount = count + range
+    setCount(newCount)
+    setHistory([...history, { id: uuidv4(), value: newCount }])
   }
 
   function countMinus() {
-    if (minCount < count) {
-      setCount(count - range)
-      setHistory([...history, count - range])
-    }
+    const newCount = count - range
+    setCount(newCount)
+    setHistory([...history, { id: uuidv4(), value: newCount }])
   }
 
   function handleClickReset() {
     setCount(0)
     setHistory([])
-    setRange(0)
+    setMaxCount(5)
+    setMinCount(0)
+    setRange(1)
   }
 
   return (
     <>
       <p>{count}</p>
-      <button onClick={countPlus}>カウンターを増やす</button>
-      <button onClick={countMinus}>カウンターを減らす</button>
+      <button disabled={maxCount - 1 < count} onClick={countPlus}>
+        カウンターを増やす
+      </button>
+      <button disabled={count - 1 < minCount} onClick={countMinus}>
+        カウンターを減らす
+      </button>
       <button onClick={handleClickReset}>カウンターをリセット</button>
       <p>最大値</p>
       <input
@@ -53,8 +63,8 @@ export default function Home() {
         onChange={(e) => setRange(Number(e.target.value))}
       />
       <ul>
-        {history.map((item, index) => (
-          <li key={index}>{item}</li>
+        {history.map((item) => (
+          <li key={item.id}>{item.value}</li>
         ))}
       </ul>
     </>
