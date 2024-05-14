@@ -1,7 +1,14 @@
+const style = {
+  border: 'solid 1px tomato',
+  padding: '20px',
+  borderRadius: '10px',
+  marginTop: '20px'
+}
+
 export const CompleteTodos = (props) => {
-  const { todos, onClickBack } = props;
+  const { todos, onClickBack } = props
   return (
-    <div className="complete-area">
+    <div style={style}>
       <p className="title">完了のTODO</p>
       <ul>
         {todos.map((todo, index) => (
@@ -14,5 +21,5 @@ export const CompleteTodos = (props) => {
         ))}
       </ul>
     </div>
-  );
-};
+  )
+}

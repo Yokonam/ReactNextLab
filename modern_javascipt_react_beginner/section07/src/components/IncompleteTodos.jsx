@@ -1,13 +1,20 @@
+const style = {
+  border: 'solid 1px tomato',
+  padding: '20px',
+  borderRadius: '10px',
+  marginTop: '20px'
+}
+
 export const IncompleteTodos = (props) => {
-  const { todos, onClickComplete, onClickDelete } = props;
+  const { todos, onClickComplete, onClickDelete } = props
   return (
-    <div className="incomplete-area">
-      <p className="title">未完了のTODO</p>
+    <div style={style}>
+      <p className="title">未完了</p>
       <ul>
         {todos.map((todo, index) => (
           <li key={todo}>
             <div className="list-row">
-              <p className="todo-item">{todo}</p>
+              <span>{todo}</span>
               <button onClick={() => onClickComplete(index)}>完了</button>
               <button onClick={() => onClickDelete(index)}>削除</button>
             </div>
@@ -15,5 +22,5 @@ export const IncompleteTodos = (props) => {
         ))}
       </ul>
     </div>
-  );
-};
+  )
+}

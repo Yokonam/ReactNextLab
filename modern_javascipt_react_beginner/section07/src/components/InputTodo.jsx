@@ -1,18 +1,18 @@
 const style = {
-  backgroundColor: "#c6e5d9",
-  width: "400px",
-  height: "30px",
-  padding: "8px",
-  margin: "8px",
-  borderRadius: "8px"
-};
+  border: 'solid 1px tomato',
+  padding: '20px',
+  borderRadius: '10px',
+  display: 'flex',
+  gap: '10px'
+}
 
 export const InputTodo = (props) => {
-  const { todoText, onChange, onClick, disabled } = props;
+  const { todoText, onChange, onClick, disabled } = props
   return (
     <div style={style}>
       <input
         disabled={disabled}
+        type="text"
         placeholder="TODOを入力"
         value={todoText}
         onChange={onChange}
@@ -21,5 +21,5 @@ export const InputTodo = (props) => {
         追加
       </button>
     </div>
-  );
-};
+  )
+}
