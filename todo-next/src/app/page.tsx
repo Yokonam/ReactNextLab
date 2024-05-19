@@ -1,24 +1,21 @@
 'use client'
 import { useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
 export default function Home() {
   const [inputText, setInputText] = useState('')
   const [list, setList] = useState<string[]>([])
 
-  const onchange = (value: string) => {
-    setInputText(value)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputText(event.target.value)
   }
 
-  const onclickAdd = () => {
+  const handleAdd = () => {
     setList([...list, inputText])
     setInputText('')
   }
 
-  const onClickDelete = (index: number) => {
-    const newList = [...list]
-    newList.splice(index, 1)
-    setList(newList)
+  const handleDelete = (index: number) => {
+    setList(list.filter((_, i) => i !== index))
   }
 
   return (
@@ -27,10 +24,10 @@ export default function Home() {
         <input
           type="text"
           id="input"
-          onChange={(e) => onchange(e.target.value)}
+          onChange={handleChange}
           value={inputText}
         />
-        <button onClick={() => onclickAdd()} disabled={inputText === ''}>
+        <button onClick={handleAdd} disabled={inputText === ''}>
           追加
         </button>
       </div>
@@ -38,9 +35,9 @@ export default function Home() {
         <ul>
           {list.map((item, index) => {
             return (
-              <li key={uuidv4()}>
+              <li key={index}>
                 <p>{item}</p>
-                <button onClick={() => onClickDelete(index)}>削除</button>
+                <button onClick={() => handleDelete(index)}>削除</button>
               </li>
             )
           })}
