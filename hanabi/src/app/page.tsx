@@ -1,14 +1,9 @@
 'use client'
 import { useState } from 'react'
-type Card = {
-  value: number
-  exists: boolean
-}
+import CardCollection from './components/CardCollection'
+import { CardCollectionProp } from './components/types'
 
-type CardCollection = {
-  [color: string]: Card[]
-}
-const initialCards: CardCollection = {
+const initialCards: CardCollectionProp = {
   red: [
     { value: 1, exists: false },
     { value: 1, exists: false },
@@ -72,7 +67,7 @@ const initialCards: CardCollection = {
 }
 
 export default function Home() {
-  const [cardList, setCardList] = useState<CardCollection>(initialCards)
+  const [cardList, setCardList] = useState<CardCollectionProp>(initialCards)
 
   const handleChange = (color: string, index: number) => {
     const updatedCards = { ...cardList }
@@ -81,26 +76,7 @@ export default function Home() {
   }
   return (
     <>
-      <div>
-        {Object.keys(initialCards).map((color) => (
-          <div key={color}>
-            <h2>{color}</h2>
-            {initialCards[color].map((card, index) => (
-              <div key={index}>
-                Value: {card.value}, Exists: {card.exists ? 'Yes' : 'No'}
-                <input
-                  type="checkbox"
-                  checked={card.exists}
-                  id={`${color}-${index}`}
-                  name={`${color}-${index}`}
-                  onChange={() => handleChange(color, index)}
-                />
-                <label htmlFor={`${color}-${index}`}>{card.value}</label>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
+      <CardCollection cards={initialCards} handleChange={handleChange} />
     </>
   )
 }
