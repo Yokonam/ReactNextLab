@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import CardCollection from './components/CardCollection'
 import { CardCollectionProp } from './components/types'
+import { v4 as uuid } from 'uuid'
 
 const initialCards: CardCollectionProp = {
   red: [
@@ -66,6 +67,10 @@ const initialCards: CardCollectionProp = {
   ]
 }
 
+const Card = {
+  color: ['red', 'blue', 'green', 'yellow', 'white'],
+  number: [1, 2, 3, 4, 5]
+}
 export default function Home() {
   const [cardList, setCardList] = useState<CardCollectionProp>(initialCards)
 
@@ -76,7 +81,39 @@ export default function Home() {
   }
   return (
     <>
-      <CardCollection cards={initialCards} handleChange={handleChange} />
+      {/* <CardCollection cards={initialCards} handleChange={handleChange} /> */}
+      <div>
+        <ul>
+          {[...Array(5)].map(() => (
+            <li key={uuid()}>
+              <div>
+                <p>Color</p>
+                {Card.color.map((item) => {
+                  const id = uuid()
+                  return (
+                    <div key={id}>
+                      <input type="checkbox" id={id} name={item} />
+                      <label htmlFor={id}>{item}</label>
+                    </div>
+                  )
+                })}
+              </div>
+              <div>
+                <p>Number</p>
+                {Card.number.map((item) => {
+                  const id = uuid()
+                  return (
+                    <div key={id}>
+                      <input type="checkbox" id={id} name={`${item}`} />
+                      <label htmlFor={id}>{item}</label>
+                    </div>
+                  )
+                })}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   )
 }
