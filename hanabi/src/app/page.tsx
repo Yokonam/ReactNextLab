@@ -3,6 +3,7 @@ import { useState } from 'react'
 import CardCollection from './components/CardCollection'
 import { CardCollectionProp } from './components/types'
 import { v4 as uuid } from 'uuid'
+import CardColor from './components/CardColor'
 
 const initialCards: CardCollectionProp = {
   red: [
@@ -90,12 +91,7 @@ export default function Home() {
                 <p>Color</p>
                 {Card.color.map((item) => {
                   const id = uuid()
-                  return (
-                    <div key={id}>
-                      <input type="checkbox" id={id} name={item} />
-                      <label htmlFor={id}>{item}</label>
-                    </div>
-                  )
+                  return <CardColor key={id} id={id} item={item} />
                 })}
               </div>
               <div>
