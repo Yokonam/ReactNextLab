@@ -3,7 +3,7 @@ import { useState } from 'react'
 import CardCollection from './components/CardCollection'
 import { CardCollectionProp } from './components/types'
 import { v4 as uuid } from 'uuid'
-import CardColor from './components/CardColor'
+import CardItem from './components/CardItem'
 
 const initialCards: CardCollectionProp = {
   red: [
@@ -91,19 +91,14 @@ export default function Home() {
                 <p>Color</p>
                 {Card.color.map((item) => {
                   const id = uuid()
-                  return <CardColor key={id} id={id} item={item} />
+                  return <CardItem key={id} id={id} item={item} />
                 })}
               </div>
               <div>
                 <p>Number</p>
                 {Card.number.map((item) => {
                   const id = uuid()
-                  return (
-                    <div key={id}>
-                      <input type="checkbox" id={id} name={`${item}`} />
-                      <label htmlFor={id}>{item}</label>
-                    </div>
-                  )
+                  return <CardItem key={id} id={id} item={item} />
                 })}
               </div>
             </li>
