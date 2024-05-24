@@ -1,9 +1,13 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import CardCollection from './components/CardCollection'
 import { CardCollectionProp } from './components/types'
 import { v4 as uuid } from 'uuid'
 import CardItem from './components/CardItem'
+type CardItem = {
+  id: string
+  number: number
+}
 
 const initialCards: CardCollectionProp = {
   red: [
@@ -73,36 +77,65 @@ const Card = {
   number: [1, 2, 3, 4, 5]
 }
 export default function Home() {
-  const [cardList, setCardList] = useState<CardCollectionProp>(initialCards)
+  const [cardCollection, setCardCollection] =
+    useState<CardCollectionProp>(initialCards)
 
   const handleChange = (color: string, index: number) => {
-    const updatedCards = { ...cardList }
+    const updatedCards = { ...cardCollection }
     updatedCards[color][index].exists = !updatedCards[color][index].exists
-    setCardList(updatedCards)
+    setCardCollection(updatedCards)
   }
+
+  const [cardList, setCardList] = useState<CardItem[]>([])
+  useEffect(() => {
+    const initialCardList: CardItem[] = Array.from(
+      { length: 5 },
+      (_, index) => ({
+        id: uuid(),
+        number: index
+      })
+    )
+    setCardList(initialCardList)
+  }, [])
+
+  const handleDeleteClick = (id: string) => {
+    setCardList((prevList) => {
+      const updatedList = prevList.filter((item) => item.id !== id)
+      const newItem = {
+        id: uuid(),
+        number: updatedList.length
+      }
+      return [...updatedList, newItem]
+    })
+  }
+
   return (
     <>
       {/* <CardCollection cards={initialCards} handleChange={handleChange} /> */}
       <div>
         <ul>
-          {[...Array(5)].map(() => (
-            <li key={uuid()}>
-              <div>
-                <p>Color</p>
-                {Card.color.map((item) => {
-                  const id = uuid()
-                  return <CardItem key={id} id={id} item={item} />
-                })}
-              </div>
-              <div>
-                <p>Number</p>
-                {Card.number.map((item) => {
-                  const id = uuid()
-                  return <CardItem key={id} id={id} item={item} />
-                })}
-              </div>
-            </li>
-          ))}
+          {cardList.map((card) => {
+            return (
+              <li key={card.id}>
+                <p>{card.number}</p>
+                <div>
+                  <p>Color</p>
+                  {Card.color.map((item) => {
+                    const id = uuid()
+                    return <CardItem key={id} id={id} item={item} />
+                  })}
+                </div>
+                <div>
+                  <p>Number</p>
+                  {Card.number.map((item) => {
+                    const id = uuid()
+                    return <CardItem key={id} id={id} item={item} />
+                  })}
+                </div>
+                <button onClick={() => handleDeleteClick(card.id)}>削除</button>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </>
