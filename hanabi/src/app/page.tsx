@@ -101,9 +101,10 @@ export default function Home() {
   const handleDeleteClick = (id: string) => {
     setCardList((prevList) => {
       const updatedList = prevList.filter((item) => item.id !== id)
+      const lastNumber = prevList.slice(-1)[0].number
       const newItem = {
         id: uuid(),
-        number: updatedList.length
+        number: lastNumber + 1
       }
       return [...updatedList, newItem]
     })
