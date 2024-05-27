@@ -13,11 +13,11 @@ type Color = {
 }
 
 type NumberOption = {
-  1: boolean
-  2: boolean
-  3: boolean
-  4: boolean
-  5: boolean
+  '1': boolean
+  '2': boolean
+  '3': boolean
+  '4': boolean
+  '5': boolean
 }
 
 type CardItem = {
@@ -118,7 +118,7 @@ export default function Home() {
           yellow: false,
           white: false
         },
-        numbers: { 1: false, 2: false, 3: false, 4: false, 5: false }
+        numbers: { '1': false, '2': false, '3': false, '4': false, '5': false }
       })
     )
     setCardList(initialCardList)
@@ -133,12 +133,18 @@ export default function Home() {
       prevList.map((item) => {
         if (item.id === id) {
           const updatedItem = { ...item }
+          console.log(updatedItem)
           if (category === 'color') {
-            updatedItem.colors[text as keyof Color] =
-              !updatedItem.colors[text as keyof Color]
+            updatedItem.colors = {
+              ...item.colors,
+              [text as keyof Color]: !item.colors[text as keyof Color]
+            }
           } else {
-            updatedItem.numbers[text as keyof NumberOption] =
-              !updatedItem.numbers[text as keyof NumberOption]
+            updatedItem.numbers = {
+              ...item.numbers,
+              [text as keyof NumberOption]:
+                !item.numbers[text as keyof NumberOption]
+            }
           }
           return updatedItem
         }
@@ -161,7 +167,7 @@ export default function Home() {
           yellow: false,
           white: false
         },
-        numbers: { 1: false, 2: false, 3: false, 4: false, 5: false }
+        numbers: { '1': false, '2': false, '3': false, '4': false, '5': false }
       }
       return [...updatedList, newItem]
     })
@@ -185,7 +191,10 @@ export default function Home() {
                         key={id}
                         id={id}
                         text={color}
-                        handleChange={handleChangeCard(id, color, 'color')}
+                        handleChange={() =>
+                          handleChangeCard(id, color, 'color')
+                        }
+                        checked={colors[color as keyof Color]}
                       />
                     )
                   })}
@@ -199,7 +208,10 @@ export default function Home() {
                         key={id}
                         id={id}
                         text={number}
-                        handleChange={handleChangeCard(id, number, 'number')}
+                        handleChange={() =>
+                          handleChangeCard(id, number, 'number')
+                        }
+                        checked={numbers[number as keyof NumberOption]}
                       />
                     )
                   })}

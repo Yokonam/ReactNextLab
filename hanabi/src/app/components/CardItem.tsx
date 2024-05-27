@@ -1,10 +1,21 @@
 import { CardCollectionProps } from './types'
-
-function CardItem({ id, item }: { id: string; item: string | number }) {
+interface CardItemProps {
+  id: string
+  text: string
+  handleChange: () => void
+  checked: boolean
+}
+function CardItem({ id, text, handleChange, checked }: CardItemProps) {
   return (
     <div key={id}>
-      <input type="checkbox" id={id} name={`${item}`} />
-      <label htmlFor={id}>{`${item}`}</label>
+      <input
+        type="checkbox"
+        id={id}
+        name={`${text}`}
+        onChange={() => handleChange()}
+        checked={checked}
+      />
+      <label htmlFor={id}>{text}</label>
     </div>
   )
 }
