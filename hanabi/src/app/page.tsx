@@ -90,15 +90,15 @@ const initialCards: CardCollectionProp = {
   ]
 }
 
-const Card = {
-  color: ['red', 'blue', 'green', 'yellow', 'white'],
-  number: [1, 2, 3, 4, 5]
+const cardOptions = {
+  colors: ['red', 'blue', 'green', 'yellow', 'white'],
+  numbers: ['1', '2', '3', '4', '5']
 }
 export default function Home() {
   const [cardCollection, setCardCollection] =
     useState<CardCollectionProp>(initialCards)
 
-  const handleChange = (color: string, index: number) => {
+  const handleChangeCollection = (color: string, index: number) => {
     const updatedCards = { ...cardCollection }
     updatedCards[color][index].exists = !updatedCards[color][index].exists
     setCardCollection(updatedCards)
@@ -133,7 +133,6 @@ export default function Home() {
       prevList.map((item) => {
         if (item.id === id) {
           const updatedItem = { ...item }
-          console.log(updatedItem)
           if (category === 'color') {
             updatedItem.colors = {
               ...item.colors,
@@ -173,9 +172,44 @@ export default function Home() {
     })
   }
 
+  const handleOnClick = (key: string, type: 'colors' | 'numbers') => {
+    const updateCardList = cardList.map((card) => {
+      return {
+        ...card,
+        [type]: {
+          ...card[type],
+          [key]: true
+        }
+      }
+    })
+    setCardList(updateCardList)
+  }
   return (
     <>
-      {/* <CardCollection cards={initialCards} handleChange={handleChange} /> */}
+      <CardCollection
+        cards={initialCards}
+        handleChange={handleChangeCollection}
+      />
+      <div>
+        {cardOptions.colors.map((color) => (
+          <button
+            key={`${color}`}
+            onClick={() => handleOnClick(color, 'colors')}
+          >
+            {color}
+          </button>
+        ))}
+      </div>
+      <div>
+        {cardOptions.numbers.map((number) => (
+          <button
+            key={`${number}`}
+            onClick={() => handleOnClick(number, 'numbers')}
+          >
+            {number}
+          </button>
+        ))}
+      </div>
       <div>
         <ul>
           {cardList.map(({ id, index, colors, numbers }) => {
@@ -185,10 +219,9 @@ export default function Home() {
                 <div>
                   <p>Color</p>
                   {Object.keys(colors).map((color) => {
-                    const id = uuid()
                     return (
                       <CardItem
-                        key={id}
+                        key={`${id}-${color}`}
                         id={id}
                         text={color}
                         handleChange={() =>
@@ -202,10 +235,9 @@ export default function Home() {
                 <div>
                   <p>Number</p>
                   {Object.keys(numbers).map((number) => {
-                    const id = uuid()
                     return (
                       <CardItem
-                        key={id}
+                        key={`${id}-${number}`}
                         id={id}
                         text={number}
                         handleChange={() =>
