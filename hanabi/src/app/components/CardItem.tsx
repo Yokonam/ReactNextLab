@@ -10,12 +10,12 @@ function CardItem({ id, text, handleChange, checked }: CardItemProps) {
     <div key={id}>
       <input
         type="checkbox"
-        id={id}
+        id={`${id}-${text}`}
         name={`${text}`}
         onChange={() => handleChange()}
         checked={checked}
       />
-      <label htmlFor={id}>{text}</label>
+      <label htmlFor={`${id}-${text}`}>{text}</label>
     </div>
   )
 }
