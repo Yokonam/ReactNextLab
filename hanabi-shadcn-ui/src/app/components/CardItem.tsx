@@ -29,7 +29,7 @@ function CardItem({
         <CardTitle>{index}</CardTitle>
       </CardHeader>
       <CardContent>
-        <ToggleGroup type="single">
+        <ToggleGroup type="single" variant="outline">
           {Object.keys(colors).map((color) => {
             return (
               <CardCheckbox
@@ -43,7 +43,7 @@ function CardItem({
             )
           })}
         </ToggleGroup>
-        <ToggleGroup type="single">
+        <ToggleGroup type="single" variant="outline">
           {Object.keys(numbers).map((number) => {
             return (
               <CardCheckbox

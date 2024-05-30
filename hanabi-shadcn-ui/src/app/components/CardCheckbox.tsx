@@ -21,7 +21,7 @@ function CardCheckbox({
     type === 'color'
       ? colorClasses[text as Color]
       : numberClasses[text as Number]
-
+  console.log(classes)
   return (
     <ToggleGroupItem
       id={`${id}-${text}`}
@@ -29,9 +29,7 @@ function CardCheckbox({
       onClick={handleChange}
       data-state={checked ? 'on' : 'off'}
       aria-pressed={checked}
-      className={
-        checked ? `data-state-on:${classes.default} ${classes.hover || ''}` : ''
-      }
+      className={`${checked ? `${classes.default} ${classes.hover}` : ''}`}
     >
       {text}
     </ToggleGroupItem>
