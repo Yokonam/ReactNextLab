@@ -2,9 +2,9 @@ import { CardCollectionProps } from './types'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 function CardCollection({ cards, handleChange }: CardCollectionProps) {
   return (
-    <Card>
+    <div className="grid grid-cols-5 gap-2">
       {Object.keys(cards).map((color) => (
-        <div key={color}>
+        <Card key={color}>
           <CardHeader>
             <CardTitle>{color}</CardTitle>
           </CardHeader>
@@ -24,9 +24,9 @@ function CardCollection({ cards, handleChange }: CardCollectionProps) {
               </div>
             ))}
           </CardContent>
-        </div>
+        </Card>
       ))}
-    </Card>
+    </div>
   )
 }
 export default CardCollection

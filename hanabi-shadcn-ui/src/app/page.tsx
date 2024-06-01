@@ -177,7 +177,7 @@ export default function Home() {
         cards={initialCards}
         handleChange={handleChangeCollection}
       />
-      <div className="grid grid-cols-5 gap-2">
+      <div className="grid grid-cols-5 gap-2 mt-20">
         {cardOptions.colors.map((color) => (
           <ColorButton
             key={`${color}`}
@@ -196,7 +196,7 @@ export default function Home() {
         ))}
       </div>
       <div className="mt-20">
-        <div className="flex flex-row-reverse	gap-5">
+        <div className="grid grid-cols-5 gap-2 mt-5">
           {cardList.map(({ id, index, colors, numbers }) => {
             return (
               <CardItem
