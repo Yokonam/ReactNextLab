@@ -9,7 +9,12 @@
 .title {
   margin: 0;
 }
+
 .button {
   background: tomato;
   color: #fff;
+
+  &:hover {
+    background: #ff6347;
+  }
 }
