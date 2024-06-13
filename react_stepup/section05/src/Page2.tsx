@@ -4,7 +4,7 @@ export const Page2 = () => {
   return (
     <>
       <h1>Page2</h1>
-      <Link to="page2/000">test</Link>
+      <Link to="000?name=a">URLパラメーターページ</Link>
     </>
   )
 }
