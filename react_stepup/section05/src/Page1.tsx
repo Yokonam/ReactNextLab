@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 interface CustomLinkProps {
   pathname: string
   state: number[]
@@ -6,6 +6,11 @@ interface CustomLinkProps {
 
 export const Page1 = () => {
   const arr = [...Array(100).keys()]
+  const navigate = useNavigate()
+
+  const onclickDetailA = () => {
+    navigate('/page1/detailA')
+  }
   return (
     <>
       <h1>Page1</h1>
@@ -14,6 +19,8 @@ export const Page1 = () => {
       </Link>
       <br />
       <Link to="/page1/DetailB">DetailB</Link>
+      <br />
+      <button onClick={onclickDetailA}>DetailA</button>
     </>
   )
 }
