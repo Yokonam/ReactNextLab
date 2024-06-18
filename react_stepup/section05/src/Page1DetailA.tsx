@@ -4,13 +4,13 @@ export const Page1DetailA = () => {
   const navigate = useNavigate()
 
   const onclickBack = () => {
-    navigate('/page1/detailA')
+    navigate('/page1')
   }
   console.log(location.state)
 
   return (
     <>
-      <h1>Page1DetailA</h1>
+      <h2>Page1DetailA</h2>
       <button onClick={onclickBack}>戻る</button>
     </>
   )
