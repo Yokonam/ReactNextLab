@@ -4,6 +4,7 @@ import { Page1 } from '../Page1'
 import { Page2 } from '../Page2'
 import { Page1Routes } from './Page1Routes'
 import { Page2Routes } from './Page2Routes'
+import { Page404 } from '../Page404'
 
 export const Router = () => {
   return (
@@ -19,6 +20,7 @@ export const Router = () => {
           <Route key={route.path} path={route.path} element={route.element} />
         ))}
       </Route>
+      <Route path="*" element={<Page404 />} />
     </Routes>
   )
 }

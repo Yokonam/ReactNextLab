@@ -1,9 +1,4 @@
 import { Link, useNavigate, Outlet } from 'react-router-dom'
-interface CustomLinkProps {
-  pathname: string
-  state: number[]
-}
-
 export const Page1 = () => {
   const arr = [...Array(100).keys()]
   const navigate = useNavigate()
