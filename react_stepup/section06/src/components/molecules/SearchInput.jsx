@@ -5,9 +5,20 @@ import { Input } from '../atoms/input/Input'
 
 export const SearchInput = (props) => {
   return (
-    <div>
+    <SContainer>
       <Input type="text" placeholder="検索条件" />
-      <SecondaryButton>検索</SecondaryButton>
-    </div>
+      <SButtonWrapper>
+        <SecondaryButton>検索</SecondaryButton>
+      </SButtonWrapper>
+    </SContainer>
   )
 }
+
+const SContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const SButtonWrapper = styled.div`
+  padding-left: 8px;
+`

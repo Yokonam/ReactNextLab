@@ -6,5 +6,7 @@ export const Input = (props) => {
 }
 
 const SInput = styled.input`
-  background-color: #11999e;
+  padding: 8px 24px;
+  border: 2px solid #11999e;
+  border-radius: calc(infinity * 1px);
 `
