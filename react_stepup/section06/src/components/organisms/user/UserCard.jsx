@@ -14,6 +14,8 @@ export const UserCard = (props) => {
           <dd>{user.phone}</dd>
           <dt>会社名</dt>
           <dd>{user.company.name}</dd>
+          <dt>ウェブサイト</dt>
+          <dd>{user.company.website}</dd>
         </dl>
       </SDl>
     </Card>
