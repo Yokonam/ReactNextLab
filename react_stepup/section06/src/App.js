@@ -1,9 +1,10 @@
-import logo from './logo.svg';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import { PrimaryButton } from './components/atoms/button/PrimaryButton';
 import { SecondaryButton } from './components/atoms/button/SecondaryButton';
 import { SearchInput } from './components/molecules/SearchInput';
 import { UserCard } from './components/organisms/user/UserCard';
+import {DefaultLayout} from './components/templates/DefaultLayout'
 
 const user = {
   name: "わんこ",
@@ -18,14 +19,16 @@ const user = {
 
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter>
+    <DefaultLayout>
      <PrimaryButton>テスト</PrimaryButton>
      <PrimaryButton>テスト</PrimaryButton>
      <SecondaryButton>テスト</SecondaryButton>
-    <br/>
-    <SearchInput />
-    <UserCard user={user} />
-    </div>
+      <br/>
+      <SearchInput />
+      <UserCard user={user} />
+    </DefaultLayout>
+    </BrowserRouter>
   );
 }
 
