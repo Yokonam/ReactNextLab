@@ -5,6 +5,7 @@ import { SecondaryButton } from './components/atoms/button/SecondaryButton';
 import { SearchInput } from './components/molecules/SearchInput';
 import { UserCard } from './components/organisms/user/UserCard';
 import {DefaultLayout} from './components/templates/DefaultLayout'
+import { Router } from './components/router/Router';
 
 const user = {
   name: "わんこ",
@@ -19,16 +20,7 @@ const user = {
 
 function App() {
   return (
-    <BrowserRouter>
-    <DefaultLayout>
-     <PrimaryButton>テスト</PrimaryButton>
-     <PrimaryButton>テスト</PrimaryButton>
-     <SecondaryButton>テスト</SecondaryButton>
-      <br/>
-      <SearchInput />
-      <UserCard user={user} />
-    </DefaultLayout>
-    </BrowserRouter>
+    <Router />
   );
 }
 
