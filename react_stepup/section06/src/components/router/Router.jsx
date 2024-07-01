@@ -1,12 +1,27 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Top } from '../pages/Top'
 import { Users } from '../pages/Users'
+import { DefaultLayout } from '../templates/DefaultLayout'
 export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Top />} />
-        <Route path="/Users" element={<Users />} />
+        <Route
+          path="/"
+          element={
+            <DefaultLayout>
+              <Top />
+            </DefaultLayout>
+          }
+        />
+        <Route
+          path="/Users"
+          element={
+            <DefaultLayout>
+              <Users />
+            </DefaultLayout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   )
