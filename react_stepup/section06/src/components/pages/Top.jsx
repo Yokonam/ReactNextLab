@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 import { SecondaryButton } from '../atoms/button/SecondaryButton'
 export const Top = () => {
+  const onClickAdmin = () => alert('管理者です')
+  const onClickGeneral = () => alert('一般です')
   return (
     <SContainer>
       <h2>top</h2>
-      <SecondaryButton>管理者</SecondaryButton>
+      <SecondaryButton onClick={onClickAdmin}>管理者</SecondaryButton>
       <br />
-      <SecondaryButton>一般</SecondaryButton>
+      <SecondaryButton onClick={onClickGeneral}>一般</SecondaryButton>
     </SContainer>
   )
 }
