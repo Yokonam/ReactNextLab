@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { SearchInput } from '../molecules/SearchInput'
 import { UserCard } from '../organisms/user/UserCard'
+import { SecondaryButton } from '../atoms/button/SecondaryButton'
+import { useRecoilState } from 'recoil'
 const users = [...Array(10).keys()].map((val) => {
   return {
     name: `わんこ${val}`,
