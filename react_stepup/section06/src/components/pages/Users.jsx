@@ -3,6 +3,9 @@ import { SearchInput } from '../molecules/SearchInput'
 import { UserCard } from '../organisms/user/UserCard'
 import { SecondaryButton } from '../atoms/button/SecondaryButton'
 import { useRecoilState } from 'recoil'
+import { useState } from 'react'
+import { userState } from '../../store/userState'
+
 const users = [...Array(10).keys()].map((val) => {
   return {
     name: `わんこ${val}`,
@@ -15,11 +18,18 @@ const users = [...Array(10).keys()].map((val) => {
     }
   }
 })
+
+const [] = useRecoilState(useState)
+
+const onClickSwitch = () => {
+  setUserInfo({ isSignedIn: !userInfo.isSignedIn })
+}
 export const Users = () => {
   return (
     <SContainer>
       <h2>ユーザー</h2>
       <SearchInput />
+      <SecondaryButton onClick={onClickSwitch}>新規作成</SecondaryButton>
       <SUserArea>
         {users.map((user) => (
           <UserCard key={user.name} user={user} />
