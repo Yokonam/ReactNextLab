@@ -19,7 +19,7 @@ const users = [...Array(10).keys()].map((val) => {
   }
 })
 
-const [] = useRecoilState(useState)
+const [userInfo, setUserInfo] = useRecoilState(userState)
 
 const onClickSwitch = () => {
   setUserInfo({ isSignedIn: !userInfo.isSignedIn })
