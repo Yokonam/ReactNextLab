@@ -1,10 +1,11 @@
+import React from 'react'
 import styled from 'styled-components'
-import { SearchInput } from '../molecules/SearchInput'
-import { UserCard } from '../organisms/user/UserCard'
 import { SecondaryButton } from '../atoms/button/SecondaryButton'
 import { useRecoilState } from 'recoil'
-import { useState } from 'react'
-import { userState } from '../../store/userState'
+
+import { SearchInput } from '../molecules/SearchInput'
+import { UserCard } from '../organisms/user/UserCard'
+import userState from '../../store/userState'
 
 const users = [...Array(10).keys()].map((val) => {
   return {
@@ -19,12 +20,12 @@ const users = [...Array(10).keys()].map((val) => {
   }
 })
 
-const [userInfo, setUserInfo] = useRecoilState(userState)
-
-const onClickSwitch = () => {
-  setUserInfo({ isSignedIn: !userInfo.isSignedIn })
-}
 export const Users = () => {
+  const [userInfo, setUserInfo] = useRecoilState(userState)
+
+  const onClickSwitch = () => {
+    setUserInfo({ isSignedIn: !userInfo.isSignedIn })
+  }
   return (
     <SContainer>
       <h2>ユーザー</h2>
