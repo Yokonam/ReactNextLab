@@ -5,7 +5,7 @@ import { useRecoilState } from 'recoil'
 
 import { SearchInput } from '../molecules/SearchInput'
 import { UserCard } from '../organisms/user/UserCard'
-import userState from '../../store/userState'
+import { userState } from '../../store/userState.js'
 
 const users = [...Array(10).keys()].map((val) => {
   return {
