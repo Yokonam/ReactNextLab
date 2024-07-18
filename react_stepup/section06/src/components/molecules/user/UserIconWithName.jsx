@@ -1,10 +1,9 @@
 import React from 'react'
+import styled from 'styled-components'
 import { useRecoilValue } from 'recoil'
 import { userState } from '../../../store/userState.js'
-import styled from 'styled-components'
 export const UserIconWithName = (props) => {
   const { image, name } = props
-  // const { userInfo } = useContext(UserContext)
   const userInfo = useRecoilValue(userState)
   const isAdmin = userInfo ? userInfo.isAdmin : false
 

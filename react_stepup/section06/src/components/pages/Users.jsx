@@ -24,13 +24,14 @@ export const Users = () => {
   const [userInfo, setUserInfo] = useRecoilState(userState)
 
   const onClickSwitch = () => {
-    setUserInfo({ isSignedIn: !userInfo.isSignedIn })
+    setUserInfo({ isAdmin: !userInfo.isAdmin })
   }
+
   return (
     <SContainer>
       <h2>ユーザー</h2>
       <SearchInput />
-      <SecondaryButton onClick={onClickSwitch}>新規作成</SecondaryButton>
+      <SecondaryButton onClick={onClickSwitch}>切り替え</SecondaryButton>
       <SUserArea>
         {users.map((user) => (
           <UserCard key={user.name} user={user} />
