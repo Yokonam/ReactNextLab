@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
-import { useSetRecoilState } from 'recoil'
 import { SecondaryButton } from '../atoms/button/SecondaryButton'
 import { userState } from '../../store/userState'
+
+import { useSetRecoilState } from 'recoil'
 export const Top = () => {
   const navigate = useNavigate()
 
+  // const setUserInfo = useSetRecoilState(userState)
   const setUserInfo = useSetRecoilState(userState)
 
   const onClickAdmin = () => {
