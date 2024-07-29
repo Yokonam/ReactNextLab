@@ -3,8 +3,13 @@ import { ColorfulMessage } from './components/ColorfulMessage'
 
 export const App = () => {
   const [num, setNum] = useState(0)
+  const [show, setShow] = useState(true)
   const onClickButton = () => {
     setNum(num + 1)
+  }
+
+  const onClickShow = () => {
+    setShow(!show)
   }
   return (
     <div>
@@ -17,6 +22,8 @@ export const App = () => {
         ボタン
       </button>
       <p>{num}</p>
+      <button onClick={onClickShow}>on or off</button>
+      {show && <p>😃</p>}
     </div>
   )
 }
