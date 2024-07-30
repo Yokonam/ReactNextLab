@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ColorfulMessage } from './components/ColorfulMessage'
 
 export const App = () => {
@@ -11,6 +11,15 @@ export const App = () => {
   const onClickShow = () => {
     setShow(!show)
   }
+
+  useEffect(() => {
+    if (num > 0 && num % 3 === 0) {
+      show || setShow(true)
+    } else {
+      show && setShow(false)
+    }
+  }, [num, show])
+
   return (
     <div>
       <h1>こんにちは</h1>
