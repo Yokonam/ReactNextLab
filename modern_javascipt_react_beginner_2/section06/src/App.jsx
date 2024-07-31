@@ -18,7 +18,7 @@ export const App = () => {
     } else {
       show && setShow(false)
     }
-  }, [num, show])
+  }, [num])
 
   return (
     <div>
