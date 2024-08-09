@@ -1,4 +1,4 @@
-
+// クロージャー
 function incrementFactory() {
     let num = 0
     function increment() {
