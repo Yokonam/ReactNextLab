@@ -9,8 +9,8 @@
 function fn() {
     if(true) {
         let a = 'fn called';
+        return a;
     }
-    return a; // ReferenceError: a is not defined
 }
 
 const result = fn();
@@ -26,7 +26,7 @@ function fn2() {
     console.log(val); // 期待値->'val1'
 
     if(true) {
-        var val = 'val2';
+        let val = 'val2';
         console.log(val); // 期待値->'val2'
     }
 
@@ -45,3 +45,17 @@ fn2();
  * increment(); // 期待値->3
  * increment(); // 期待値->4
  */
+
+function createCounter(){
+    let num = 0
+
+    return function(){
+        num++
+        console.log(num)
+    }
+}
+
+const increment = createCounter()
+increment()
+increment()
+increment()
