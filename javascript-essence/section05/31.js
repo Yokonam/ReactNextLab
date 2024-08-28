@@ -6,11 +6,22 @@
  *
  * ※if文は削除してはいけません。
  */
+// function fn() {
+//     if(true) {
+//         let a = 'fn called';
+//         return a;
+//     }
+// }
+
+// 回答
 function fn() {
+    let a
+
     if(true) {
-        let a = 'fn called';
-        return a;
+        a = 'fn called';
     }
+    return a;
+
 }
 
 const result = fn();
@@ -46,16 +57,26 @@ fn2();
  * increment(); // 期待値->4
  */
 
-function createCounter(){
+// function createCounter(){
+//     let num
+
+//     return function(){
+//         num++
+//         console.log(num)
+//     }
+// }
+
+
+// 回答
+{
     let num = 0
 
-    return function(){
+    function increment(){
         num++
         console.log(num)
     }
 }
 
-const increment = createCounter()
 increment()
 increment()
 increment()
