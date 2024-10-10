@@ -48,6 +48,21 @@
 // }
 // fn(a);
 
+function fn(num) {
+    if(num === undefined || num === null){
+        num = -1;
+    }
+    console.log(num);
+}
+
+fn(undefined);
+fn(0);
+fn(null);
+
+
+// 0の場合でも-1が表示されるが問題
+// 0の場合は0が表示されるように修正する
+//  if(num === undefined || num === null)
 
 /**
  * 問題３：
