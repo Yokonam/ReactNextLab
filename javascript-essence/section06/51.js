@@ -60,7 +60,7 @@ fn(0);
 fn(null);
 
 
-// 0の場合でも-1が表示されるが問題
+// 0の場合でも-1が表示されるのが問題
 // 0の場合は0が表示されるように修正する
 //  if(num === undefined || num === null)
 
@@ -74,3 +74,11 @@ fn(null);
  * greeting("Bob"); -> 出力結果："hello, Bob"
  *
  */
+
+
+function greeting(name, text = "hello"){
+    console.log(`${text}, ${name}`);
+}
+
+greeting("Bob", "hi");
+greeting("Bob");
