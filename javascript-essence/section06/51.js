@@ -12,25 +12,33 @@
 // console.log('-1 == false', -1 == false);
 // console.log('!10 === false', !10 === false);
 
-// console.log("0 == false", 0 == false);
+console.log("0 == false", 0 == false);
 // >>true
 
-// console.log("0 === false", 0 === false);
+console.log("0 === false", 0 === false);
 // >>false
 
-// console.log('"false" == false', "false" == false);
+console.log('"false" == false', "false" == false);
 // >>false
 
-// console.log('"0" == 0', "0" == 0);
+console.log('"0" == 0', "0" == 0);
 // >>true
 // 字列の "0" が数値に変換されて比較されるためtrue
 
-// console.log('Boolean("0") === false', Boolean("0") === false);
+console.log('Boolean("0") === false', Boolean("0") === false);
 // >>false
 
-// console.log('Boolean(0) === false', Boolean(0) === false);
+console.log('Boolean(0) === false', Boolean(0) === false);
 // >>true
 
+console.log('!Boolean(0) === false', !Boolean(0) === false);
+// >>true
+
+console.log('-1 == false', -1 == false);
+// >>false
+
+console.log('!10 === false', !10 === false);
+// >>false
 
 /**
  * 問題２：
