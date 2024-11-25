@@ -17,10 +17,10 @@ function fn(ref) {
 fn(helloLee); // hello Lee
 
 
-function a() {
-  console.log(this.b);
+function a(name) {
+  console.log('hello ' + name);
 }
 
-const b = a.bind({name: 'b'});
+const b = a.bind(null, 'tim');
 
-b(); // b
+b('tom'); // hello tim
